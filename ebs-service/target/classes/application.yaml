@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: ebs-service
+  server:
+    port: 8080  # Puerto donde tu aplicación estará escuchando
