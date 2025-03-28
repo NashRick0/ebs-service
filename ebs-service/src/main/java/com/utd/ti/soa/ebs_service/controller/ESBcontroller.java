@@ -124,4 +124,21 @@ public class ESBcontroller {
 
         return ResponseEntity.ok().body(response);
     }
+
+    @PostMapping("/user/login")
+    public ResponseEntity<?> loginUser(@RequestBody User user) {
+
+        System.out.println("Request Body: " + user);
+
+        // Enviar solicitud a servicio externo
+        String response = webClient.post()
+                .uri("http://users.railway.internal:3001/api/users/login")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .bodyValue(user)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+
+        return ResponseEntity.ok().body(response);
+    }
 }
