@@ -41,7 +41,7 @@ public class ESBcontroller {
 
         // Enviar solicitud a servicio externo
         String response = webClient.post()
-                .uri("http://users.railway.internal:3001/api/users") // Cambiado de localhost a users
+                .uri("http://users-production-d26e.up.railway.app/api/users") // Cambiado de localhost a users
                 .bodyValue(user)
                 .retrieve()
                 .bodyToMono(String.class)
@@ -69,7 +69,7 @@ public class ESBcontroller {
         System.out.println("Updating user with ID: " + id + " Data: " + user);
 
         String response = webClient.patch()
-                .uri("http://users.railway.internal:3001/api/users/{id}", id) // Cambiado de localhost a users
+                .uri("http://users-production-d26e.up.railway.app/api/users/{id}", id) // Cambiado de localhost a users
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .body(BodyInserters.fromValue(user))
                 .retrieve()
@@ -94,7 +94,7 @@ public class ESBcontroller {
         }
 
         String response = webClient.get()
-                .uri("http://users.railway.internal:3001/api/users/all") // Cambiado de localhost a users
+                .uri("http://users-production-d26e.up.railway.app/api/users/all") // Cambiado de localhost a users
                 .retrieve()
                 .bodyToMono(String.class)
                 .doOnError(e -> System.out.println("Error al obtener usuarios: " + e.getMessage()))
@@ -117,7 +117,7 @@ public class ESBcontroller {
         }
 
         String response = webClient.delete()
-                .uri("http://users.railway.internal:3001/api/users/{id}", id) // Cambiado de localhost a users
+                .uri("http://users-production-d26e.up.railway.app/api/users/{id}", id) // Cambiado de localhost a users
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
