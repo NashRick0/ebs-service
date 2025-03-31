@@ -132,7 +132,7 @@ public class ESBcontroller {
 
         // Enviar solicitud a servicio externo
         String response = webClient.post()
-                .uri("http://users.railway.internal:3001/api/users/login")
+                .uri("http://users-production-d26e.up.railway.app/api/users/login")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .bodyValue(user)
                 .retrieve()
